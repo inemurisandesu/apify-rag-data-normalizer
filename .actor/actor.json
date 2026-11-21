@@ -1,0 +1,12 @@
+{
+  "actorSpecification": 1,
+  "name": "rag-data-normalizer",
+  "title": "RAG & LLM Data Normalizer (CSV/JSON/Markdown Cleaner, Chunker & PII Redactor)",
+  "description": "100% non-scraping utility Actor for AI agents & RAG pipelines. Normalizes raw CSV/JSON/Markdown/text, redacts PII deterministically, deduplicates chunks by SHA-256, and outputs LLM-ready structured JSON.",
+  "version": "0.1",
+  "meta": {
+    "templateId": "python-empty"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "../Dockerfile"
+}

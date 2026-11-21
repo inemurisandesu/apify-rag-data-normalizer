@@ -1,0 +1,49 @@
+{
+  "title": "RAG & LLM Data Normalizer Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "documents": {
+      "title": "Documents to Normalize",
+      "type": "array",
+      "description": "Array of raw document objects to clean, redact, chunk, and deduplicate. Each item supports: id (string), format ('text'|'markdown'|'csv'|'json'), content (string), and optional metadata (object).",
+      "editor": "json",
+      "prefill": [
+        {
+          "id": "doc-1",
+          "format": "markdown",
+          "content": "# Support Policy\nContact support@example.com or 090-1234-5678 for billing inquiries.\n\n## Refunds\nRefunds are processed within 5 business days."
+        }
+      ]
+    },
+    "chunkSize": {
+      "title": "Target Chunk Size (Characters)",
+      "type": "integer",
+      "description": "Maximum target characters per output chunk.",
+      "default": 800,
+      "minimum": 100,
+      "maximum": 16000
+    },
+    "chunkOverlap": {
+      "title": "Chunk Overlap (Characters)",
+      "type": "integer",
+      "description": "Character overlap between consecutive chunks.",
+      "default": 100,
+      "minimum": 0,
+      "maximum": 2000
+    },
+    "redactPii": {
+      "title": "Redact PII Deterministically",
+      "type": "boolean",
+      "description": "Mask emails, phone numbers, IPv4 addresses, API tokens, and card-like numbers before LLM ingestion.",
+      "default": true
+    },
+    "deduplicate": {
+      "title": "Deduplicate Identical Chunks",
+      "type": "boolean",
+      "description": "Drop duplicate chunks across documents using SHA-256 hash of normalized text.",
+      "default": true
+    }
+  },
+  "required": ["documents"]
+}
